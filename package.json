@@ -37,6 +37,7 @@
     "gitbook": "^2.1.0"
   },
   "dependencies": {
-    "gulp": "~3.9.1"
+    "gulp": "~3.9.1",
+    "gulp-shell": "~0.5.2"
   }
 }
