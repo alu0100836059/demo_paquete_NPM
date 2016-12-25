@@ -1,7 +1,7 @@
 {
-  "name": "gitbook-boilerplate",
+  "name": "gitbook-start-demo-jacobo",
   "version": "0.0.1",
-  "description": "GitBook Boilerplate",
+  "description": "Paquete general para la creación de un Gitbook y su despliegue.",
   "main": "index.js",
   "scripts": {
     "generate-gitbook": "./scripts/losh generate-gitbook",
@@ -13,10 +13,13 @@
     "version": "./scripts/losh version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin":{
+    "gitbook-start": "general-exec.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alu0100836059/demo_tareas_iniciales_sytw.git",
-    "wiki": "https://github.com/alu0100836059/demo_tareas_iniciales_sytw.wiki.git"
+    "url": "https://github.com/alu0100836059/demo_paquete_NPM.git",
+    "wiki": "https://github.com/alu0100836059/demo_paquete_NPM.wiki.git"
   },
   "keywords": [
     "gitbook",
@@ -26,9 +29,9 @@
   "author": "Steven Enten <steven@enten.fr>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enten/gitbook-boilerplate/issues"
+    "url": "https://github.com/alu0100836059/demo_paquete_NPM.git/issues"
   },
-  "homepage": "https://github.com/enten/gitbook-boilerplate#readme",
+  "homepage": "https://github.com/alu0100836059/demo_paquete_NPM.git#readme",
   "devDependencies": {
     "async": "^1.4.0",
     "fs-extra": "^0.22.1",
