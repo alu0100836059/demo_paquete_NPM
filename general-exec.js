@@ -1,6 +1,8 @@
+#!/usr/bin/env node
 const path = require('path');
 const fse = require('fs-extra');
 const prompt = require('prompt');
+const ejs = require('ejs');
 const child = require('child_process');
 const exec = require('child_process').exec;
 const inquirer = require('inquirer');
@@ -153,5 +155,5 @@ if (argumentos.h || argumentos.help){
   else{
 
       console.log("NO HA INTRODUCIDO NINGUNA OPCION CONSULTE: gitbook-start --help");
-      
+
 };
