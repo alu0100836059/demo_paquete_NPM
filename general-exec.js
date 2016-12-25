@@ -27,7 +27,7 @@ var datos_usuario = [
       message: "Introduzca el nombre del autor:",
       require: true
 
-    },]      ;
+    },];
     var name, repo_url, url_wiki, author;
     //  , function (err, result) {
     //  // Log the results.
@@ -49,7 +49,12 @@ function estructura(directorio){
       //CREACION DE LOS DIRECTORIOS TXT, SCRIPTS, Y LA CARPETA A GENERAR
 
       // Pedimos los datos por consola
-      // datos_usuario();
+      inquirer.prompt(datos_usuario).then(function(result){
+        name=result.nombre_paquete;
+        repo_url=result.url;
+        url_wiki = result.url_wiki
+        author=result.author;
+
       //creamos el directorio raiz
       fs.createDir("./" + directorio, function(err){
             if(err)
@@ -121,9 +126,8 @@ function estructura(directorio){
                   fs.writeFile("./" + directorio + "/package.json", data);
               }
           });
-console.log("SALGO");
-
-}// final Estructura del directorio
+  }); // Cierre inquirer
+};// final Estructura del directorio
 
 
 // Recogida de argumentos
@@ -147,15 +151,7 @@ if (argumentos.h || argumentos.help){
     estructura(argumentos.directorio);
   }//final directorio
   else{
-    inquirer.prompt(datos_usuario).then(function(result){
-      name=result.nombre_paquete;
-      repo_url=result.url;
-      url_wiki = result.url_wiki
-      author=result.author;
 
-      // Secuetial
-      console.log("\n"+name);
       console.log("NO HA INTRODUCIDO NINGUNA OPCION CONSULTE: gitbook-start --help");
-    });
-
+      
 };
