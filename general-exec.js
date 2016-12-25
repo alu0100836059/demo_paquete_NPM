@@ -44,6 +44,86 @@ prompt.get([{
    });
 }// final datos_usuario
 
+// Generar estructura del directorio
+function estructura(directorio){
+      //CREACION DE LOS DIRECTORIOS TXT, SCRIPTS, Y LA CARPETA A GENERAR
+
+      //creamos el directorio raiz
+      fs.createDir("./" + directorio, function(err){
+            if(err)
+              console.log(err);
+            console.log("Directorio "+directorio+" creado...\n");
+        	});
+
+
+          //creamos el directorio txt
+          fs.createDir("./" + directorio + "/txt", function(err){
+            if(err)
+              console.log(err);
+            console.log(directorio+"/txt creado...\n");
+        	});
+
+
+        	//creamos el directorio scripts
+        	fs.createDir("./" + directorio + "/scripts", function(err){
+            if(err)
+              console.log(err);
+            console.log(directorio+"/scripts creado...\n");
+        	});
+
+
+        	//copiamos lo que hay en txt y lo ponemos en el txt creado
+          fs.copyDir(path.join(__dirname, '..','txt'), "./" + directorio + "/txt", function (err) {
+          	if (err)
+              console.error(err)
+            console.log("Copiando contenido de txt...\n");
+        	});
+
+
+          //copiamos lo que hay en scripts y lo ponemos en el spripts creado
+          fs.copyDir(path.join(__dirname, '..', 'scripts'), "./" + directorio + "/scripts", function (err) {
+          	if (err)
+              console.error(err)
+            console.log("Copiando contenido de scripts...\n");
+        	});
+
+
+          //copiamos gulpfile
+          fs.copyFile(path.join(__dirname,'..','gulpfile.js'), "./" + directorio + "/gulpfile.js",function(err){
+            if(err)
+              console.log(err);
+            console.log("Copiando contenido gulpfile.js...\n");
+          });
+
+
+          //copiamos el book
+          fs.copyFile(path.join(__dirname,'..','book.json'),"./" + directorio + "/book.json",function(err){
+            if(err)
+              console.log(err);
+            console.log("Copiando contenido book.json...\n");
+          });
+
+          // //copiamos el gitignore
+          // fs.copyFile(path.join(__dirname,'..','template_npm','.gitignore'),"./" + directorio + "/.gitignore",function(err){
+          //   if(err)
+          //   console.log(err);
+          // });
+
+          //renderizando package.json
+          ejs.renderFile(path.join(__dirname,'..', 'template', 'package.ejs'), { autor: author , nombre: name, direcciongit: repo_url,direccionwiki: url_wiki},
+            function(err,data){
+              if(err) {
+                  console.error(err);
+              }
+              if(data) {
+                  fs.writeFile("./" + directorio + "/package.json", data);
+              }
+          });
+console.log("SALGO");
+
+}// final Estructura del directorio
+
+
 // Recogida de argumentos
 const argumentos = require('minimist')(process.argv.slice(2));
 
@@ -57,3 +137,13 @@ if (argumentos.h || argumentos.help){
 "\tEjemplo de uso: gitbook-start --directorio DEMO\n");
 
 }// final HELP
+  Selse {
+  // Se pasa la opción de directorio
+  if (argumentos.directorio || argumentos.d){
+    console.log("Generando la estructura del directorio...\n");
+    estructura(argumentos.directorio);
+  }
+}//final directorio
+  else{
+  console.log("NO HA INTRODUCIDO NINGUNA OPCION CONSULTE: gitbook-start --help");
+};
