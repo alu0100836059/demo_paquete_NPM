@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-demo-jacobo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Paquete general para la creación de un Gitbook y su despliegue.",
   "main": "index.js",
   "scripts": {
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "gulp": "~3.9.1",
-    "gulp-shell": "~0.5.2"
+    "gulp-shell": "~0.5.2",
+    "prompt": "^1.0.0"
   }
 }
