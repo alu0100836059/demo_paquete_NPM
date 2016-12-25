@@ -3,51 +3,53 @@ const fse = require('fs-extra');
 const prompt = require('prompt');
 const child = require('child_process');
 const exec = require('child_process').exec;
-
-
+const inquirer = require('inquirer');
 
 // Recogemos los datos esenciales a través del prompt
-function datos_usuario(){
-prompt.get([{
-      type: 'input',
+var datos_usuario = [
+    {
       name: 'nombre_paquete',
       message: "Introduzca un nombre para su aplicación\n",
       default: "Libro web"
-     },{
-       type: 'input',
+     },
+     {
        name: 'url',
        message: "Introduzca la URL de su repositorio git\n",
        require: true
-     },{
-       type: 'input',
+     },
+     {
        name: 'url_wiki',
        message: "Introduzca la URL de su wiki.\n"+
                 "Si no está interesado en el despliegue de su wiki pulse intro",
-     },{
-      type: 'input',
+     },
+     {
       name: 'author',
       message: "Introduzca el nombre del autor:",
       require: true
 
-     },], function (err, result) {
-     // Log the results.
-     console.log('  nombre paquete: ' + result.nombre_paquete);
-     console.log('  url repo: ' + result.url);
-     console.log('  url wiki: ' + result.url_wiki);
-     console.log('  author ' + result.author);
-
-      // Asignamos los datos individualmente
-      name=result.nombre_paquete;
-      repo_url=result.url;
-      url_wiki = result.url_wiki
-      author=result.author;
-   });
-}// final datos_usuario
+    },]      ;
+    var name, repo_url, url_wiki, author;
+    //  , function (err, result) {
+    //  // Log the results.
+    //  console.log('  nombre paquete: ' + result.nombre_paquete);
+    //  console.log('  url repo: ' + result.url);
+    //  console.log('  url wiki: ' + result.url_wiki);
+    //  console.log('  author ' + result.author);
+     //
+    //   // Asignamos los datos individualmente
+    //   name=result.nombre_paquete;
+    //   repo_url=result.url;
+    //   url_wiki = result.url_wiki
+    //   author=result.author;
+//    });
+// }// final datos_usuario
 
 // Generar estructura del directorio
 function estructura(directorio){
       //CREACION DE LOS DIRECTORIOS TXT, SCRIPTS, Y LA CARPETA A GENERAR
 
+      // Pedimos los datos por consola
+      // datos_usuario();
       //creamos el directorio raiz
       fs.createDir("./" + directorio, function(err){
             if(err)
@@ -140,9 +142,20 @@ if (argumentos.h || argumentos.help){
   else
   // Se pasa la opción de directorio
   if (argumentos.directorio || argumentos.d){
+
     console.log("Generando la estructura del directorio...\n");
     estructura(argumentos.directorio);
   }//final directorio
   else{
-  console.log("NO HA INTRODUCIDO NINGUNA OPCION CONSULTE: gitbook-start --help");
+    inquirer.prompt(datos_usuario).then(function(result){
+      name=result.nombre_paquete;
+      repo_url=result.url;
+      url_wiki = result.url_wiki
+      author=result.author;
+
+      // Secuetial
+      console.log("\n"+name);
+      console.log("NO HA INTRODUCIDO NINGUNA OPCION CONSULTE: gitbook-start --help");
+    });
+
 };
