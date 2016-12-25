@@ -1,6 +1,12 @@
-# Tareas iniciales
+# Gitbook-start-demo-jacobo
 
-## Pasos a seguir
+El presente paquete tiene como objetivo perfeccionar y automatizar la escritura y despliegue de un libro en diferentes plataformas.  
+Se presenta como el paquete general para el cuál se crearán diversos plugins que trabajando de forma conjunta permitirán añadir diversas funcionalidades.
+
+## Instalación
+-- to do --
+
+## Pasos a seguir en el despliegue #ref:Tareas iniciales
 
 * Modificar dentro de la carpeta ./txt el contenido de nuestro Libro
 * Para gh-pages en consola: gulp deploy
