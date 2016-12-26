@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const fse = require('fs-extra');
+
+const fs = require('fs-extra');
 const prompt = require('prompt');
 const ejs = require('ejs');
 const child = require('child_process');

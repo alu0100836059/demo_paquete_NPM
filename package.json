@@ -1,6 +1,6 @@
 {
   "name": "gitbook-start-demo-jacobo",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Paquete general para la creación de un Gitbook y su despliegue.",
   "main": "index.js",
   "scripts": {

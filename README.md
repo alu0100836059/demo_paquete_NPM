@@ -4,7 +4,13 @@ El presente paquete tiene como objetivo perfeccionar y automatizar la escritura 
 Se presenta como el paquete general para el cuál se crearán diversos plugins que trabajando de forma conjunta permitirán añadir diversas funcionalidades.
 
 ## Instalación
--- to do --
+
+* Sitúese en el directorio en el que quiere instalar el paquete
+* Ejecute: npm install -g gitbook-start-demo-jacobo
+* Ejecute: npm init -y
+* Despliegue su directorio mediante: gitbook-start --directorio nombre_deseado
+* Acceda al directorio: cd nombre_deseado
+* Ejecute: npm install
 
 ## Pasos a seguir en el despliegue #ref:Tareas iniciales
 
