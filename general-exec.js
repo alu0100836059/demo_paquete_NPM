@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const path = require('path');
 const fse = require('fs-extra');
 const prompt = require('prompt');
 const ejs = require('ejs');
 const child = require('child_process');
 const exec = require('child_process').exec;
 const inquirer = require('inquirer');
+const path = require('path');
 
 // Recogemos los datos esenciales a través del prompt
 var datos_usuario = [
